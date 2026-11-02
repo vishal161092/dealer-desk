@@ -1,0 +1,29 @@
+<template>
+    <div class="im-card-root">
+        <template if:true={errorMessage}>
+            <p class="im-error">{errorMessage}</p>
+        </template>
+        <template if:false={errorMessage}>
+            <div class="heading">{heading}</div>
+            <div class="subheading">{subheading}</div>
+
+            <div class="grid">
+                <template for:each={cards} for:item="card">
+                    <div class="option"
+                         key={card.id}
+                         data-id={card.id}
+                         onclick={handleSelect}
+                         tabindex="0"
+                         role="button">
+                        <div class="icon-wrap">{card.icon}</div>
+                        <div class="option-text">
+                            <div class="option-title">{card.title}</div>
+                            <div class="option-desc">{card.subtitle}</div>
+                        </div>
+                        <button class="option-btn" tabindex="-1" type="button">{card.cta}</button>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

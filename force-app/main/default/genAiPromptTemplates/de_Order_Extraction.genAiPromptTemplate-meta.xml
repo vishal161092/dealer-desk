@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>LiU/J/jbQ0dSwRngeZTeaXQeibTV5gRpSXUFLwpvY1Y=_6</activeVersionIdentifier>
+    <developerName>de_Order_Extraction</developerName>
+    <masterLabel>DE Order Extraction</masterLabel>
+    <overridable>false</overridable>
+    <templateVersions>
+        <content>You are an order-reading assistant for a Hueline Paints dealer. You are given a dealer&apos;s order — either as an attached file (a photo of a handwritten list, a scanned sheet, a PDF, or a spreadsheet) and/or as extracted order text. Read it and return the line items.
+
+Attached file (may be an image, PDF or spreadsheet):
+{!$Input:file}
+
+Extracted order text (may be empty if the order is only in the file):
+{!$Input:orderText}
+
+Reconcile each line to this Hueline Paints catalogue. Match on product name, loosely and case-insensitively; pick the closest catalogue product. Return its SKU.
+
+CATALOGUE (sku = name, pack):
+HL000000011 = HL GLOSSCOAT ENML BLACK 1 LT, 1 L
+HL000000005 = HL GLOSSCOAT ENML G BROWN 1 LT, 1 L
+HL000000002 = HL GLOSSCOAT ENML BROWN 1 LT, 1 L
+HL000000010 = HL GLOSSCOAT ENML BLACK 500ML, 500 ML
+HL000000007 = HL GLOSSCOAT ENML SM GREY 1 LT, 1 L
+HL000000004 = HL GLOSSCOAT ENML G BROWN 500ML, 500 ML
+HL000000001 = HL GLOSSCOAT ENML BROWN 500ML, 500 ML
+HL000000012 = HL GLOSSCOAT ENML BLACK 4 LT, 4 L
+HL000000006 = HL GLOSSCOAT ENML G BROWN 4 LT, 4 L
+HL000000009 = HL GLOSSCOAT ENML BLACK 200ML, 200 ML
+HL000000003 = HL GLOSSCOAT ENML BROWN 4 LT, 4 L
+HL000000008 = HL GLOSSCOAT ENML SM GREY 4 LT, 4 L
+HL000000031 = Smoothset Wall Putty WHITE 40 KG, 40 KG
+HL000000029 = Smoothset Wall Putty WHITE 20 KG, 20 KG
+HL000000028 = HUELINE WALLPUTTY WHITE 5KG, 5 KG
+HL000000027 = HUELINE WALLPUTTY WHITE 1KG-P, 1 KG
+HL000000030 = HUELINE WALLPUTTY WHITE 30 KG, 30 KG
+HL000000038 = HLEXTWLPUTTY NOTKN 40KG, 40 KG
+HL000000032 = HLEXTWLPUTTY WHITEWT 30LT, 30 KG
+HL000000033 = HLEXTWLPUTTY S30 30LT, 30 KG
+HL000000035 = HLEXTWLPUTTY PUTTYST 1KG, 1 KG
+HL000000034 = HLEXTWLPUTTY S40 40LT, 40 KG
+HL000000036 = HLEXTWLPUTTY PUTTYST 5LT, 5 KG
+HL000000037 = HLEXTWLPUTTY PUTTYST 20LT, 20 KG
+HL000000017 = HL FIELDCOAT EMUL TE 1 1 LT, 1 L
+HL000000019 = HL FIELDCOAT EMUL TE 1 10 LT, 10 L
+HL000000020 = HL FIELDCOAT EMUL TE 1 20 LT, 20 L
+HL000000018 = HL FIELDCOAT EMUL TE 1 4 LT, 4 L
+HL000000021 = HLFIELDCOATEMUL HLTE22N 900ML, 900 ML
+HL000000013 = HL FIELDCOAT EMUL SUPWHITE 1 LTR, 1 L
+HL000000016 = HL FIELDCOAT EMUL SUPWHITE 20 LTR, 20 L
+HL000000022 = HLFIELDCOATEMUL HLTE22N 3.6LT, 3.6 L
+HL000000015 = HL FIELDCOAT EMUL SUPWHITE 10 LTR, 10 L
+HL000000014 = HL FIELDCOAT EMUL SUPWHITE 4 LTR, 4 L
+HL000000023 = HL FIELDCOAT EMUL SWHT TN 10LT, 10 L
+HL000000025 = HL FIELDCOAT EMUL SWHT KA 10LT, 10 L
+HL000000024 = HL FIELDCOAT EMUL SWHT KA 4LT, 4 L
+HL000000026 = HL FIELDCOAT EMUL SWHT KA 20LT, 20 L
+
+Rules:
+- Return ONLY a valid JSON array and nothing else. No prose, no markdown, no code fences.
+- One object per order line, in the order they appear.
+- Each object has exactly: &quot;sku&quot; (the matched catalogue SKU, or empty string if you truly cannot match), &quot;name&quot; (the product name as the dealer wrote it), and &quot;qty&quot; (the quantity as a whole number; default 1 if a line clearly names a product but no quantity is visible).
+- Never invent products or quantities that are not in the order. If the file and text are both empty or unreadable, return [].
+
+Example output:
+[{&quot;sku&quot;:&quot;HL000000020&quot;,&quot;name&quot;:&quot;Fieldcoat Emulsion TE1 20L&quot;,&quot;qty&quot;:6},{&quot;sku&quot;:&quot;HL000000029&quot;,&quot;name&quot;:&quot;Wall Putty 20kg&quot;,&quot;qty&quot;:20}]</content>
+        <inputs>
+            <apiName>orderText</apiName>
+            <definition>primitive://String</definition>
+            <masterLabel>orderText</masterLabel>
+            <referenceName>Input:orderText</referenceName>
+            <required>false</required>
+        </inputs>
+        <inputs>
+            <apiName>file</apiName>
+            <definition>SOBJECT://ContentDocument</definition>
+            <masterLabel>file</masterLabel>
+            <referenceName>Input:file</referenceName>
+            <required>false</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultGPT4Omni</primaryModel>
+        <status>Published</status>
+        <versionIdentifier>LiU/J/jbQ0dSwRngeZTeaXQeibTV5gRpSXUFLwpvY1Y=_6</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__flex</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

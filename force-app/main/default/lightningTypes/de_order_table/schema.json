@@ -1,0 +1,5 @@
+{
+  "title" : "Order Table",
+  "description" : "Renders the dealer's editable, paginated order basket with line items and recomputed totals.",
+  "lightning:type" : "@apexClassType/c__de_OrderTableInfo"
+}

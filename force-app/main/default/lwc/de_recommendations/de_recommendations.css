@@ -1,0 +1,123 @@
+:host {
+    display: block;
+    padding: 10px;
+}
+
+.de-rec-root {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    color: #16325c;
+    max-width: 480px;
+}
+.de-rec-heading {
+    margin: 0 0 10px;
+    font-weight: 700;
+    font-size: 15px;
+}
+.de-rec-carousel {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 2px 2px 10px;
+    -webkit-overflow-scrolling: touch;
+}
+.de-rec-card {
+    position: relative;
+    flex: 0 0 190px;
+    width: 190px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 12px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.de-rec-card-selected {
+    border: 2px solid #ee3124;
+    padding: 11px;
+}
+.de-rec-tick {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ee3124;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.de-rec-name {
+    margin: 0 20px 4px 0;
+    font-weight: 700;
+    font-size: 13px;
+}
+.de-rec-meta {
+    margin: 0 0 8px;
+    font-size: 11px;
+    color: #5c6b7a;
+}
+.de-rec-reason {
+    margin: 0 0 10px;
+    font-size: 11px;
+    font-style: italic;
+    color: #ee3124;
+    line-height: 1.4;
+}
+.de-rec-stepper {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.de-rec-step {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #d8dde3;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    color: #16325c;
+}
+.de-rec-step:hover {
+    background: #f2f4f6;
+}
+.de-rec-qtyval {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+.de-rec-actions {
+    display: flex;
+    gap: 8px;
+}
+.de-rec-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.de-rec-btn-primary {
+    background: #ee3124;
+    color: #fff;
+}
+.de-rec-btn-primary:hover {
+    background: #d62718;
+}
+.de-rec-btn-secondary {
+    background: #fff;
+    color: #ee3124;
+    border-color: #ee3124;
+}
+.de-rec-error {
+    color: #c23934;
+    font-size: 13px;
+}

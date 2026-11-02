@@ -1,0 +1,20 @@
+<template>
+    <div class="ct-container">
+        <template if:true={errorMessage}>
+            <p class="ct-error">{errorMessage}</p>
+        </template>
+        <template if:false={errorMessage}>
+            <p class="ct-heading">{heading}</p>
+            <div class="ct-chip-row">
+                <template for:each={chips} for:item="chip">
+                    <button
+                        key={chip.id}
+                        class="ct-chip"
+                        data-id={chip.id}
+                        onclick={handleChipClick}
+                        type="button">{chip.label}</button>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

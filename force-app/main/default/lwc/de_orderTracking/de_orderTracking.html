@@ -1,0 +1,35 @@
+<template>
+    <div class="de-card">
+        <template if:true={errorMessage}>
+            <p class="error-text">{errorMessage}</p>
+        </template>
+        <template if:false={errorMessage}>
+            <p class="heading">{heading}</p>
+            <div class="order-list">
+                <template for:each={orders} for:item="order">
+                    <div key={order.key} class="order-row">
+                        <div class="row-top">
+                            <span class="order-number">{order.orderNumber}</span>
+                            <span class={order.pillClass}>{order.status}</span>
+                        </div>
+                        <p class="sub-line">{order.subLine}</p>
+                        <p class="detail-line">{order.detail}</p>
+                    </div>
+                </template>
+            </div>
+            <template if:true={hasActions}>
+                <div class="action-bar">
+                    <template for:each={actions} for:item="action">
+                        <button
+                            key={action.key}
+                            type="button"
+                            class="action-btn"
+                            data-message={action.message}
+                            onclick={handleActionClick}
+                        >{action.label}</button>
+                    </template>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>

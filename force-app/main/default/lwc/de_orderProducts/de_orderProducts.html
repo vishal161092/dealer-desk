@@ -1,0 +1,76 @@
+<template>
+    <div class="de-card">
+        <template if:true={errorMessage}>
+            <p class="error-text">{errorMessage}</p>
+        </template>
+        <template if:false={errorMessage}>
+            <div class="order-card">
+                <p class="order-number">{orderNumber}</p>
+                <p class="meta-line">{metaLine}</p>
+                <p class="value-line">{valueLine}</p>
+            </div>
+            <p class="question">{question}</p>
+            <template if:true={showChips}>
+                <div class="chip-row">
+                    <template for:each={products} for:item="product">
+                        <button
+                            key={product.key}
+                            type="button"
+                            class={product.chipClass}
+                            data-key={product.key}
+                            onclick={handleChipClick}
+                        >
+                            {product.label}
+                        </button>
+                    </template>
+                </div>
+            </template>
+
+            <!-- inline shortage capture: shown after a product is picked -->
+            <template if:true={showDetail}>
+                <div class="detail-panel">
+                    <p class="detail-q">How many units of <strong>{selectedLabel}</strong> were short?</p>
+                    <div class="stepper">
+                        <button
+                            type="button"
+                            class="step-btn"
+                            onclick={handleQtyDec}
+                            disabled={decDisabled}
+                            aria-label="Decrease"
+                        >−</button>
+                        <span class="step-val">{shortQty}</span>
+                        <button
+                            type="button"
+                            class="step-btn"
+                            onclick={handleQtyInc}
+                            aria-label="Increase"
+                        >+</button>
+                        <span class="step-caption">{shortSummary}</span>
+                    </div>
+
+                    <label class="note-label" for="shortNote">Add a note (optional)</label>
+                    <textarea
+                        id="shortNote"
+                        class="note-input"
+                        rows="2"
+                        placeholder="e.g. 2 drums arrived with damaged seals"
+                        value={note}
+                        oninput={handleNoteChange}
+                    ></textarea>
+
+                    <div class="detail-actions">
+                        <button type="button" class="btn-primary" onclick={handleSubmitDetail}>Submit</button>
+                        <button type="button" class="btn-link" onclick={handleChangeProduct}>Change product</button>
+                    </div>
+                </div>
+            </template>
+
+            <template if:true={submitted}>
+                <div class="detail-done">
+                    <span class="done-check">✓</span>
+                    <span>Thanks — {shortSummary} on {selectedLabel} noted.</span>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>

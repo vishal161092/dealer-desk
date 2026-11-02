@@ -1,0 +1,5 @@
+{
+  "title" : "de_activity_menu",
+  "description" : "Hueline Paints dealer agent card renderer.",
+  "lightning:type" : "@apexClassType/c__de_ActivityMenuInfo"
+}

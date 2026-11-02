@@ -1,0 +1,65 @@
+:host {
+    display: block;
+    padding: 10px;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    color: #16325c;
+    max-width: 480px;
+}
+
+.ct-container {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 14px 16px 16px 16px;
+}
+
+.ct-error {
+    padding: 12px 0;
+    color: #a86403;
+    background: #fffaf2;
+    border-radius: 8px;
+    margin: 0;
+    text-align: center;
+}
+
+.ct-heading {
+    font-size: 13px;
+    font-weight: 600;
+    color: #5c6b7a;
+    margin: 0 0 12px 0;
+}
+
+.ct-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ct-chip {
+    background: #fff;
+    border: 1px solid #ee3124;
+    color: #ee3124;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 12.5px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ct-chip:hover {
+    background: #ee3124;
+    color: #fff;
+}
+
+.ct-chip:focus {
+    outline: 2px solid #d62718;
+    outline-offset: 1px;
+}
+
+.ct-chip:active {
+    background: #d62718;
+    border-color: #d62718;
+    color: #fff;
+}

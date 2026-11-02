@@ -1,0 +1,49 @@
+<template>
+    <div class="scheme-cards-root">
+        <template if:true={heading}>
+            <p class="heading">{heading}</p>
+        </template>
+
+        <template if:true={errorMessage}>
+            <p class="error-message">{errorMessage}</p>
+        </template>
+
+        <template for:each={schemes} for:item="scheme">
+            <div key={scheme.key} class={scheme.cardClass}>
+                <div class="card-top">
+                    <span class="scheme-name">{scheme.name}</span>
+                    <span class="badge">{scheme.badge}</span>
+                </div>
+                <p class="scheme-window">{scheme.window}</p>
+
+                <div class="progress-track">
+                    <div class={scheme.barClass} style={scheme.barStyle}></div>
+                </div>
+
+                <p class="scheme-detail">{scheme.detail}</p>
+                <p class="scheme-reward">{scheme.reward}</p>
+
+                <template if:true={scheme.showBoosterButtons}>
+                    <div class="button-row">
+                        <template if:true={scheme.canAddToSecure}>
+                            <button
+                                class="btn btn-primary"
+                                data-key={scheme.key}
+                                disabled={scheme.added}
+                                onclick={handleAddToSecure}
+                            >{scheme.addLabel}</button>
+                        </template>
+                        <button class="btn btn-secondary" onclick={handleShowBoosters}>Show Boosters</button>
+                        <button class="btn btn-secondary" onclick={handleSkipSchemes}>Skip Schemes</button>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <template if:true={showFinalise}>
+            <div class="finalise-row">
+                <button class="btn btn-primary finalise-btn" onclick={handleFinalise}>Review &amp; Place Order</button>
+            </div>
+        </template>
+    </div>
+</template>

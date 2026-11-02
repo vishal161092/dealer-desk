@@ -1,0 +1,43 @@
+<template>
+    <div class="de-card">
+        <template if:true={errorMessage}>
+            <p class="error-text">{errorMessage}</p>
+        </template>
+        <template if:false={errorMessage}>
+            <p class="heading">{heading}</p>
+            <div class="summary-card">
+                <div class="summary-row">
+                    <div class="summary-item">
+                        <p class="summary-label">Credit Limit</p>
+                        <p class="summary-value">{limitText}</p>
+                    </div>
+                    <div class="summary-item">
+                        <p class="summary-label">Used</p>
+                        <p class="summary-value">{usedText}</p>
+                    </div>
+                    <div class="summary-item">
+                        <p class="summary-label">Available</p>
+                        <p class="summary-value summary-value-highlight">{availableText}</p>
+                    </div>
+                </div>
+                <div class="bar-track">
+                    <div class="bar-fill" style={barFillStyle}></div>
+                </div>
+                <p class="bar-label">{utilisationLabel}</p>
+            </div>
+            <hr class="divider" />
+            <p class="section-title">Recent Activity</p>
+            <div class="entry-list">
+                <template for:each={entries} for:item="entry">
+                    <div key={entry.key} class="entry-row">
+                        <div class="entry-left">
+                            <p class="entry-date">{entry.date}</p>
+                            <p class="entry-description">{entry.description}</p>
+                        </div>
+                        <p class={entry.amountClass}>{entry.amountText}</p>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

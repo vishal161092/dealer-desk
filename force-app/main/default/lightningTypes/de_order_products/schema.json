@@ -1,0 +1,5 @@
+{
+  "title" : "de_order_products",
+  "description" : "Hueline Paints dealer agent card renderer.",
+  "lightning:type" : "@apexClassType/c__de_OrderProductsInfo"
+}

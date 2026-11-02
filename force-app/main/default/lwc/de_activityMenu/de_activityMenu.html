@@ -1,0 +1,27 @@
+<template>
+    <div class="am-container">
+        <template if:true={errorMessage}>
+            <p class="am-error">{errorMessage}</p>
+        </template>
+        <template if:false={errorMessage}>
+            <p class="am-heading">{heading}</p>
+            <div class="am-scroll-wrap">
+                <div class="am-row">
+                    <template for:each={cards} for:item="card">
+                        <div class="am-card"
+                             key={card.id}
+                             data-id={card.id}
+                             onclick={handleCardClick}
+                             tabindex="0"
+                             role="button">
+                            <div class="am-icon-circle">{card.icon}</div>
+                            <p class="am-title">{card.title}</p>
+                            <p class="am-subtitle">{card.subtitle}</p>
+                        </div>
+                    </template>
+                </div>
+                <div class="am-scroll-hint">›</div>
+            </div>
+        </template>
+    </div>
+</template>

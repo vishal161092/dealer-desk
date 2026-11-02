@@ -1,0 +1,60 @@
+<apex:page showHeader="false" applyHtmlTag="false" applyBodyTag="false" lightningStylesheets="true">
+  <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+      <title>Hueline Service Agent | Chat Host (de_ test)</title>
+      <apex:slds />
+      <!-- TEST: does host-page CSS reach the MIAW message DOM?
+           If the chat renders in the light DOM, the avatar + bubble go side-by-side.
+           If it renders inside a cross-origin iframe, this rule cannot reach .message-block. -->
+      <style type="text/css">
+        body {
+          background: #EAF5FE;
+          font-family: system-ui;
+          margin: 0;
+        }
+        #de_hostBanner {
+          margin: 24px 34px;
+          font-family: system-ui;
+          color: #032D60;
+        }
+        #de_hostBanner h1 { font-size: 28px; margin: 0 0 4px; }
+        #de_hostBanner p { font-size: 14px; color: #001639; margin: 0; }
+
+        /* The rule under test — identical to the community Head Markup attempt */
+        .message-block {
+          flex-direction: row !important;
+          align-items: flex-start !important;
+          gap: 8px !important;
+        }
+        .message-block > :first-child { flex: 0 0 auto !important; }
+      </style>
+    </head>
+    <body>
+      <div id="de_hostBanner">
+        <h1>Hueline Service Agent — chat host (de_ test harness)</h1>
+        <p>Open the chat (bottom-right) and check whether the agent avatar sits beside the bubble.</p>
+      </div>
+
+      <script type='text/javascript'>
+        function initEmbeddedMessaging() {
+          try {
+            embeddedservice_bootstrap.settings.language = 'en_US';
+            embeddedservice_bootstrap.init(
+              '<YOUR_ORG_ID>',
+              '<YOUR_DEPLOYMENT_DEVELOPER_NAME>',
+              'https://<YOUR_SITE_DOMAIN>/<YOUR_DEPLOYMENT_PATH>',
+              {
+                scrt2URL: 'https://<YOUR_SCRT2_DOMAIN>'
+              }
+            );
+          } catch (err) {
+            console.error('Error loading Embedded Messaging: ', err);
+          }
+        };
+      </script>
+      <script type='text/javascript'
+        src='https://<YOUR_SITE_DOMAIN>/<YOUR_DEPLOYMENT_PATH>/assets/js/bootstrap.min.js'
+        onload='initEmbeddedMessaging()'></script>
+    </body>
+  </html>
+</apex:page>

@@ -1,0 +1,41 @@
+<template>
+    <div class="de-oc-root">
+        <template lwc:if={errorMessage}>
+            <p class="de-oc-error">{errorMessage}</p>
+        </template>
+
+        <template lwc:else>
+            <div class="de-oc-card">
+                <div class="de-oc-strip"></div>
+                <div class="de-oc-body">
+                    <p class="de-oc-confirmed">✓ Order Confirmed</p>
+
+                    <div class="de-oc-orderline">
+                        <span class="de-oc-ordernum">{orderNumber}</span>
+                        <span class="de-oc-ordervalue">{orderValueText}</span>
+                    </div>
+
+                    <p class="de-oc-meta">{productsUnitsText}</p>
+                    <p class="de-oc-meta">{dispatchText}</p>
+
+                    <div class="de-oc-divider"></div>
+
+                    <div class="de-oc-row">
+                        <span class="de-oc-row-label">Scheme Credit Secured</span>
+                        <span class="de-oc-row-value de-oc-green">{schemeCreditText}</span>
+                    </div>
+                    <div class="de-oc-row">
+                        <span class="de-oc-row-label">Credit Remaining</span>
+                        <span class="de-oc-row-value">{creditRemainingText}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="de-oc-actions">
+                <button class="de-oc-btn de-oc-btn-primary" onclick={handleTrackOrder}>Track This Order</button>
+                <button class="de-oc-btn de-oc-btn-secondary" onclick={handleEmailCopy}>Email Me a Copy</button>
+                <button class="de-oc-btn de-oc-btn-secondary" onclick={handlePlaceAnother}>Place Another Order</button>
+            </div>
+        </template>
+    </div>
+</template>

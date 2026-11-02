@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Convert_audio_to_text</name>
+        <label>Convert audio to text</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <actionName>speechToText</actionName>
+        <actionType>speechToText</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>contentDocumentId</name>
+            <value>
+                <elementReference>contentDocumentId</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>transcriptionModel</name>
+            <value>
+                <stringValue>elevenlabs-scribe-v2</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>speechToText</nameSegment>
+        <outputParameters>
+            <assignToReference>transcript</assignToReference>
+            <name>convertedText</name>
+        </outputParameters>
+    </actionCalls>
+    <apiVersion>67.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
+    <interviewLabel>DE Order Speech To Text {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>DE Order Speech To Text</label>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Convert_audio_to_text</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>contentDocumentId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>transcript</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

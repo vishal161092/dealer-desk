@@ -1,0 +1,27 @@
+<template>
+    <div class="de-card">
+        <template if:true={errorMessage}>
+            <p class="error-text">{errorMessage}</p>
+        </template>
+        <template if:false={errorMessage}>
+            <div class="ticket-card">
+                <p class="ticket-title">✓ {titleLine}</p>
+                <p class="meta-line">{metaLine}</p>
+                <p class="order-line">{orderLine}</p>
+                <p class="owner-line">
+                    <span class="owner-name">{owner}</span>
+                    <span class="owner-title"> · {ownerTitle}</span>
+                </p>
+                <p class="sla-line">{sla}</p>
+                <div class="button-row">
+                    <button type="button" class="btn-primary" onclick={handleTrack}>
+                        Track This Ticket
+                    </button>
+                    <button type="button" class="btn-secondary" onclick={handleNote}>
+                        Add a Note
+                    </button>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

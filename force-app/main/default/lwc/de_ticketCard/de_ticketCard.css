@@ -1,0 +1,94 @@
+:host {
+    display: block;
+    padding: 10px;
+}
+
+.de-card {
+    max-width: 480px;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    color: #16325c;
+}
+
+.error-text {
+    color: #c23934;
+    font-size: 13px;
+}
+
+.ticket-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-top: 4px solid #2e844a;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 14px 16px;
+}
+
+.ticket-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: #2e844a;
+    margin: 0 0 8px 0;
+}
+
+.meta-line {
+    font-size: 13px;
+    color: #5c6b7a;
+    margin: 0 0 6px 0;
+}
+
+.order-line {
+    font-size: 13px;
+    margin: 0 0 6px 0;
+}
+
+.owner-line {
+    font-size: 13px;
+    margin: 0 0 2px 0;
+}
+
+.owner-name {
+    font-weight: 700;
+}
+
+.owner-title {
+    color: #8491a0;
+}
+
+.sla-line {
+    font-size: 12px;
+    color: #8491a0;
+    margin: 0 0 12px 0;
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-primary {
+    background: #ee3124;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #d62718;
+}
+
+.btn-secondary {
+    background: #fff;
+    color: #ee3124;
+    border: 1px solid #ee3124;
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: #eaf5fe;
+}

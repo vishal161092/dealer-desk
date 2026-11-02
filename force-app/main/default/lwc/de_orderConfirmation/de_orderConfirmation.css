@@ -1,0 +1,102 @@
+:host {
+    display: block;
+    padding: 10px;
+}
+
+.de-oc-root {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    color: #16325c;
+    max-width: 480px;
+}
+.de-oc-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.de-oc-strip {
+    height: 6px;
+    background: #2e844a;
+}
+.de-oc-body {
+    padding: 16px;
+}
+.de-oc-confirmed {
+    margin: 0 0 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2e844a;
+}
+.de-oc-orderline {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+.de-oc-ordernum {
+    font-weight: 700;
+    font-size: 15px;
+}
+.de-oc-ordervalue {
+    font-weight: 700;
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+}
+.de-oc-meta {
+    margin: 0 0 4px;
+    font-size: 13px;
+    color: #5c6b7a;
+}
+.de-oc-divider {
+    height: 1px;
+    background: #eef1f4;
+    margin: 12px 0;
+}
+.de-oc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+.de-oc-row-label {
+    color: #5c6b7a;
+}
+.de-oc-row-value {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+.de-oc-green {
+    color: #2e844a;
+}
+.de-oc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+.de-oc-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.de-oc-btn-primary {
+    background: #ee3124;
+    color: #fff;
+}
+.de-oc-btn-primary:hover {
+    background: #d62718;
+}
+.de-oc-btn-secondary {
+    background: #fff;
+    color: #ee3124;
+    border-color: #ee3124;
+}
+.de-oc-error {
+    color: #c23934;
+    font-size: 13px;
+}

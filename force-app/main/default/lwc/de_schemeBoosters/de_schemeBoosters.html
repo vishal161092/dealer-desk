@@ -1,0 +1,46 @@
+<template>
+    <div class="boosters-root">
+        <template if:true={heading}>
+            <p class="heading">{heading}</p>
+        </template>
+
+        <template if:true={errorMessage}>
+            <p class="error-message">{errorMessage}</p>
+        </template>
+
+        <div class="chip-row">
+            <template for:each={items} for:item="item">
+                <div key={item.key} class="chip-card">
+                    <p class="chip-name">{item.name}</p>
+                    <p class="chip-pack">{item.pack}</p>
+                    <p class="chip-qty">{item.qtyValueLabel}</p>
+                    <p class="chip-note">{item.note}</p>
+                    <button
+                        class="btn btn-chip"
+                        data-key={item.key}
+                        disabled={item.added}
+                        onclick={handleAddItem}
+                    >{item.btnLabel}</button>
+                </div>
+            </template>
+        </div>
+
+        <div class="gap-counter">
+            <span>{gapRemainingText}</span>
+        </div>
+
+        <div class={schemeCardClass}>
+            <div class="card-top">
+                <span class="scheme-name">{targetSchemeName}</span>
+                <span class="badge">{displayBadge}</span>
+            </div>
+            <p class="scheme-detail">{displayDetail}</p>
+            <p class="scheme-reward">{displayReward}</p>
+        </div>
+
+        <div class="button-row">
+            <button class="btn btn-primary" onclick={handleAddBoth}>Add Both</button>
+            <button class="btn btn-secondary" onclick={handleNotNow}>Not Now</button>
+        </div>
+    </div>
+</template>

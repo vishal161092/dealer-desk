@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>de_UploadKey__c</fullName>
+    <description>Groups the base64 chunks of ONE uploaded file. A large file is split client-side into several ~120KB base64 slices, each stored on its own guest-owned child de_OrderCapture__c row (de_CaptureData__c) sharing this upload key. Analyze Order gathers all rows with the same de_UploadKey__c, orders them by de_ChunkIdx__c, concatenates, and materializes a single ContentVersion. Lets uploads exceed the ~96KB single-field cap.</description>
+    <externalId>false</externalId>
+    <label>Upload Key</label>
+    <length>40</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

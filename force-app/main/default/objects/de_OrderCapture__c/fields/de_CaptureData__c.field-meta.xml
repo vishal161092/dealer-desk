@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>de_CaptureData__c</fullName>
+    <description>Base64-encoded captured payload (photo/file bytes, audio bytes, or the manual-order JSON) written by the chat guest, who cannot create Salesforce Files. Analyze Order, running as the agent user, decodes this into a real ContentVersion so the existing extraction/transcription paths work. Capped at ~96 KB binary by the field limit; the capture UI downscales photos to fit.</description>
+    <label>Capture Data</label>
+    <length>131072</length>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

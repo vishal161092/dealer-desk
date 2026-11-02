@@ -1,0 +1,86 @@
+<template>
+    <div class="de-or-root">
+        <template lwc:if={errorMessage}>
+            <p class="de-or-error">{errorMessage}</p>
+        </template>
+
+        <template lwc:if={lines.length}>
+            <div class="de-or-card">
+                <div class="de-or-header">
+                    <span class="de-or-title">{title}</span>
+                    <span class="de-or-count">{productCount} products</span>
+                </div>
+
+                <table class="de-or-table">
+                    <thead>
+                        <tr>
+                            <th class="de-or-th de-or-num">#</th>
+                            <th class="de-or-th">Product</th>
+                            <th class="de-or-th de-or-pack">Pack</th>
+                            <th class="de-or-th de-or-qty">Qty</th>
+                            <th class="de-or-th de-or-val">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={pagedRows} for:item="row">
+                            <tr key={row.sku}>
+                                <td class="de-or-td de-or-num">{row.n}</td>
+                                <td class="de-or-td">
+                                    <span class="de-or-name">{row.name}</span>
+                                    <span class="de-or-rate">{row.rateText}</span>
+                                </td>
+                                <td class="de-or-td de-or-pack">{row.pack}</td>
+                                <td class="de-or-td de-or-qty">
+                                    <div class="de-or-stepper">
+                                        <button class="de-or-step" data-sku={row.sku} onclick={handleDec}>−</button>
+                                        <span class="de-or-qtyval">{row.qty}</span>
+                                        <button class="de-or-step" data-sku={row.sku} onclick={handleInc}>+</button>
+                                    </div>
+                                </td>
+                                <td class="de-or-td de-or-val">{row.valueText}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+
+                <div class="de-or-footer">
+                    <div class="de-or-pager">
+                        <button class="de-or-pagebtn" onclick={handlePrev} disabled={disablePrev}>‹</button>
+                        <span class="de-or-pagelabel">{pageLabel}</span>
+                        <button class="de-or-pagebtn" onclick={handleNext} disabled={disableNext}>›</button>
+                    </div>
+                    <div class="de-or-totals">{footerText}</div>
+                </div>
+            </div>
+
+            <div class="de-or-summary">
+                <div class="de-or-summary-row">
+                    <span class="de-or-summary-label">Order Value</span>
+                    <span class="de-or-summary-value">→ {liveOrderValueText}</span>
+                </div>
+                <div class="de-or-summary-row">
+                    <span class="de-or-summary-label">Scheme Benefit Secured</span>
+                    <span class="de-or-summary-value de-or-benefit">→ {summary.benefitText}</span>
+                </div>
+
+                <template lwc:if={isBreaching}>
+                    <div class={creditLineClass}>
+                        <p class="de-or-breach-text">This order exceeds your available credit.</p>
+                        <button class="de-or-btn de-or-btn-secondary" onclick={handleSplitOrder}>Split the Order</button>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <div class={creditLineClass}>
+                        <span>Credit Available {summary.creditAvailText}</span>
+                        <span class="de-or-remaining">· {liveRemainingText} left</span>
+                    </div>
+                </template>
+            </div>
+
+            <div class="de-or-actions">
+                <button class="de-or-btn de-or-btn-primary" onclick={handleConfirm}>Confirm &amp; Place Order</button>
+                <button class="de-or-btn de-or-btn-secondary" onclick={handleKeepEditing}>Keep Editing</button>
+            </div>
+        </template>
+    </div>
+</template>

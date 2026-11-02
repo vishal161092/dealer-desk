@@ -1,0 +1,215 @@
+:host {
+    display: block;
+    padding: 10px;
+}
+
+.boosters-root {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 480px;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    color: #16325c;
+}
+
+.heading {
+    margin: 0 0 2px 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #16325c;
+}
+
+.error-message {
+    margin: 0;
+    font-size: 13px;
+    color: #a86403;
+}
+
+.chip-row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.chip-card {
+    flex: 0 0 auto;
+    width: 150px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.chip-name {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: #16325c;
+}
+
+.chip-pack {
+    margin: 0;
+    font-size: 11px;
+    color: #5c6b7a;
+}
+
+.chip-qty {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #16325c;
+}
+
+.chip-note {
+    margin: 2px 0 8px 0;
+    font-size: 11px;
+    color: #8491a0;
+    min-height: 14px;
+}
+
+.btn-chip {
+    margin-top: auto;
+    background: #ee3124;
+    color: #fff;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+}
+
+.btn-chip:hover:not(:disabled) {
+    background: #d62718;
+}
+
+.btn-chip:disabled {
+    background: #edf7f0;
+    color: #2e844a;
+    border: 1px solid #c3e6cd;
+    cursor: default;
+}
+
+.gap-counter {
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #16325c;
+    background: #f7f9fb;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.target-scheme-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-left: 4px solid #e5e9ee;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 14px 16px;
+    transition: border-left-color 0.4s ease, background-color 0.4s ease;
+}
+
+.target-scheme-card.status-within_reach {
+    border-left-color: #a86403;
+    background-color: #fffaf2;
+}
+
+.target-scheme-card.status-secured {
+    border-left-color: #2e844a;
+    background-color: #edf7f0;
+}
+
+.card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.scheme-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: #16325c;
+}
+
+.badge {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+    transition: color 0.4s ease, background-color 0.4s ease, border-color 0.4s ease;
+}
+
+.status-within_reach .badge {
+    color: #a86403;
+    background: #fffaf2;
+    border: 1px solid #f3e2c7;
+}
+
+.status-secured .badge {
+    color: #2e844a;
+    background: #edf7f0;
+    border: 1px solid #c3e6cd;
+}
+
+.scheme-detail {
+    margin: 10px 0 2px 0;
+    font-size: 13px;
+    color: #16325c;
+    transition: color 0.4s ease;
+}
+
+.scheme-reward {
+    margin: 2px 0 0 0;
+    font-size: 12px;
+    color: #5c6b7a;
+    transition: color 0.4s ease;
+}
+
+.button-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+}
+
+.btn-primary {
+    background: #ee3124;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #d62718;
+}
+
+.btn-secondary {
+    background: #fff;
+    color: #ee3124;
+    border: 1px solid #c9d7e4;
+}
+
+.btn-secondary:hover {
+    background: #f4f6f8;
+}

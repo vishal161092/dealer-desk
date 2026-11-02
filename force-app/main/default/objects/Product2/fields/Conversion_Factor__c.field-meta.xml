@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Conversion_Factor__c</fullName>
+    <description>How many units of this product make one orderable bundle. Used by the cart-add validation when a dealer adds products to an order.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Bundle size: how many units can be bought together for this product/pack.</inlineHelpText>
+    <label>Conversion Factor</label>
+    <precision>7</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

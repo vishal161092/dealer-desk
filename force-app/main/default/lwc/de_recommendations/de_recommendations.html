@@ -1,0 +1,41 @@
+<template>
+    <div class="de-rec-root">
+        <template lwc:if={errorMessage}>
+            <p class="de-rec-error">{errorMessage}</p>
+        </template>
+
+        <template lwc:if={cards.length}>
+            <p class="de-rec-heading">{heading}</p>
+
+            <div class="de-rec-carousel">
+                <template for:each={displayCards} for:item="card">
+                    <div
+                        key={card.sku}
+                        class={card.cardClass}
+                        data-sku={card.sku}
+                        onclick={handleCardClick}
+                    >
+                        <template lwc:if={card.selected}>
+                            <div class="de-rec-tick">✓</div>
+                        </template>
+                        <p class="de-rec-name">{card.name}</p>
+                        <p class="de-rec-meta">{card.pack} · {card.rateText}</p>
+                        <p class="de-rec-reason">{card.reason}</p>
+                        <div class="de-rec-stepper">
+                            <button class="de-rec-step" data-sku={card.sku} onclick={handleDec}>−</button>
+                            <span class="de-rec-qtyval">{card.qty}</span>
+                            <button class="de-rec-step" data-sku={card.sku} onclick={handleInc}>+</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <div class="de-rec-actions">
+                <template lwc:if={hasSelection}>
+                    <button class="de-rec-btn de-rec-btn-primary" onclick={handleAdd}>{addButtonLabel}</button>
+                </template>
+                <button class="de-rec-btn de-rec-btn-secondary" onclick={handleNoThanks}>No Thanks</button>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>de_ParentCaptureId__c</fullName>
+    <description>Id of the original Start_Order_Capture holder this capture belongs to. Set when the chat viewer (a site guest user) cannot attach a file to the agent-owned holder, so the guest creates its own child capture record (which it owns, so FirstPublishLocationId succeeds) and points it back here. Analyze Order, running as the agent user, resolves the child from this field and reads the attached file.</description>
+    <externalId>false</externalId>
+    <label>Parent Capture Id</label>
+    <length>18</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

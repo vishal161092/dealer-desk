@@ -1,0 +1,218 @@
+:host {
+    display: block;
+    padding: 10px;
+}
+
+.de-or-root {
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    color: #16325c;
+    max-width: 480px;
+}
+.de-or-card {
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.de-or-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f7f9fb;
+    border-bottom: 1px solid #eef1f4;
+}
+.de-or-title {
+    font-weight: 700;
+    font-size: 15px;
+}
+.de-or-count {
+    font-size: 12px;
+    color: #5c6b7a;
+}
+.de-or-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+.de-or-th {
+    text-align: left;
+    padding: 8px 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #8491a0;
+    border-bottom: 1px solid #eef1f4;
+}
+.de-or-td {
+    padding: 10px;
+    border-bottom: 1px solid #f2f4f6;
+    vertical-align: middle;
+}
+.de-or-num {
+    width: 28px;
+    color: #8491a0;
+}
+.de-or-pack {
+    width: 56px;
+    color: #5c6b7a;
+}
+.de-or-qty {
+    width: 96px;
+}
+.de-or-val {
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+.de-or-name {
+    display: block;
+    font-weight: 600;
+}
+.de-or-rate {
+    display: block;
+    font-size: 11px;
+    color: #8491a0;
+}
+.de-or-stepper {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.de-or-step {
+    width: 22px;
+    height: 22px;
+    border: 1px solid #d8dde3;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    color: #16325c;
+}
+.de-or-step:hover {
+    background: #f2f4f6;
+}
+.de-or-qtyval {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+}
+.de-or-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    background: #f7f9fb;
+    border-top: 1px solid #eef1f4;
+}
+.de-or-pager {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.de-or-pagebtn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #d8dde3;
+    background: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #16325c;
+}
+.de-or-pagebtn:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+.de-or-pagelabel {
+    font-size: 12px;
+    color: #5c6b7a;
+}
+.de-or-totals {
+    font-weight: 700;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+.de-or-summary {
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.de-or-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+.de-or-summary-label {
+    color: #5c6b7a;
+}
+.de-or-summary-value {
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+.de-or-benefit {
+    color: #2e844a;
+}
+.de-or-credit-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #5c6b7a;
+    padding-top: 8px;
+    border-top: 1px solid #eef1f4;
+    font-variant-numeric: tabular-nums;
+}
+.de-or-remaining {
+    font-weight: 600;
+    color: #16325c;
+}
+.de-or-credit-breach {
+    flex-direction: column;
+    align-items: flex-start;
+    color: #c23934;
+    gap: 10px;
+}
+.de-or-breach-text {
+    margin: 0;
+    font-weight: 600;
+    font-size: 13px;
+    color: #c23934;
+}
+.de-or-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+.de-or-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.de-or-btn-primary {
+    background: #ee3124;
+    color: #fff;
+}
+.de-or-btn-primary:hover {
+    background: #d62718;
+}
+.de-or-btn-secondary {
+    background: #fff;
+    color: #ee3124;
+    border-color: #ee3124;
+}
+.de-or-error {
+    color: #c23934;
+    font-size: 13px;
+}

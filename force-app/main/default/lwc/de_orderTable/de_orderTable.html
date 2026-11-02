@@ -1,0 +1,234 @@
+<template>
+    <div class="de-ot-root">
+        <template lwc:if={errorMessage}>
+            <p class="de-ot-error">{errorMessage}</p>
+        </template>
+
+        <!-- ===================== CAPTURE ===================== -->
+        <template lwc:if={isCapture}>
+            <div class="de-ot-card">
+                <div class="de-ot-header">
+                    <span class="de-ot-title">{title}</span>
+                </div>
+
+                <div class="de-ot-capture">
+                    <!-- photo / order-sheet upload (native input -> base64 -> guest-owned child) -->
+                    <template lwc:if={isUpload}>
+                        <p class="de-ot-hint">{uploadLabel}</p>
+                        <button class="de-ot-filebtn" onclick={triggerFilePicker} disabled={busy}>
+                            📎 {chooseLabel}
+                        </button>
+                        <input
+                            type="file"
+                            class="de-ot-fileinput"
+                            accept={acceptAttr}
+                            onchange={handleFileSelected}
+                        />
+                        <template lwc:if={selectedFileName}>
+                            <p class="de-ot-filename">{selectedFileName}</p>
+                        </template>
+                    </template>
+
+                    <!-- voice: record (live transcript) + attach an audio note -->
+                    <template lwc:if={isVoice}>
+                        <p class="de-ot-hint">Read out your order — product and quantity for each line.</p>
+                        <button class={recordClass} onclick={toggleRecording} disabled={recordDisabled}>
+                            <span class="de-ot-recdot"></span>{recordLabel}
+                        </button>
+
+                        <!-- live caption; for a recording this transcript IS the order sent to the agent -->
+                        <template lwc:if={showCaption}>
+                            <div class="de-ot-caption" aria-live="polite">
+                                <span class="de-ot-caption-label">Heard So Far</span>
+                                <p class="de-ot-caption-text">
+                                    <template lwc:if={captionText}>{captionText}</template>
+                                    <template lwc:if={captionPlaceholder}>
+                                        <span class="de-ot-caption-ph">{captionPlaceholder}</span>
+                                    </template>
+                                </p>
+                            </div>
+                        </template>
+
+                        <p class="de-ot-or">or attach a voice note</p>
+                        <button class="de-ot-filebtn" onclick={triggerFilePicker} disabled={busy}>
+                            📎 {chooseLabel}
+                        </button>
+                        <input
+                            type="file"
+                            class="de-ot-fileinput"
+                            accept={acceptAttr}
+                            onchange={handleFileSelected}
+                        />
+                        <template lwc:if={selectedFileName}>
+                            <p class="de-ot-filename">{selectedFileName}</p>
+                        </template>
+                    </template>
+
+                    <!-- manual catalogue search -->
+                    <template lwc:if={isManual}>
+                        <input
+                            type="text"
+                            class="de-ot-search"
+                            placeholder="Search by product name or code (SKU)…"
+                            value={searchTerm}
+                            oninput={handleSearch}
+                        />
+                        <ul class="de-ot-results">
+                            <template for:each={filteredCatalogue} for:item="p">
+                                <li key={p.sku} class="de-ot-resrow" data-sku={p.sku} onclick={handleAddManual}>
+                                    <span class="de-ot-resmain">
+                                        <span class="de-ot-resname">{p.name}</span>
+                                        <span class="de-ot-ressku">Code: {p.sku}</span>
+                                    </span>
+                                    <span class="de-ot-resmeta">
+                                        <span class="de-ot-respack">{p.metaText}</span>
+                                        <span class="de-ot-resbundle">{p.bundleText}</span>
+                                    </span>
+                                    <span class="de-ot-add">＋</span>
+                                </li>
+                            </template>
+                        </ul>
+
+                        <template lwc:if={hasManualItems}>
+                            <div class="de-ot-picked">
+                                <template for:each={manualRows} for:item="row">
+                                    <div key={row.sku} class="de-ot-pickrow">
+                                        <span class="de-ot-pickname">{row.name}
+                                            <template lwc:if={row.bundleText}>
+                                                <span class="de-ot-pickbundle">{row.bundleText}</span>
+                                            </template>
+                                        </span>
+                                        <div class="de-ot-stepper">
+                                            <button class="de-ot-step" data-sku={row.sku} onclick={handleManualDec}>−</button>
+                                            <span class="de-ot-qtyval">{row.qty}</span>
+                                            <button class="de-ot-step" data-sku={row.sku} onclick={handleManualInc}>＋</button>
+                                        </div>
+                                        <span class="de-ot-pickval">{row.valueText}</span>
+                                        <button class="de-ot-remove" data-sku={row.sku} onclick={handleManualRemove}>✕</button>
+                                    </div>
+                                </template>
+                            </div>
+                            <button class="de-ot-btn de-ot-btn-primary de-ot-done" onclick={handleManualDone} disabled={manualDoneDisabled}>
+                                Build My Order
+                            </button>
+                        </template>
+                    </template>
+
+                    <template lwc:if={busy}>
+                        <div class="de-ot-busy">
+                            <div class="de-ot-spinner"></div>
+                            <span>{busyText}</span>
+                        </div>
+                    </template>
+
+                    <template lwc:if={isSent}>
+                        <div class="de-ot-sent">
+                            <span class="de-ot-sent-check">✓</span>
+                            <span>Got it — your order table will appear below.</span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <!-- ===================== NO PRODUCTS FOUND ===================== -->
+        <template lwc:if={showEmpty}>
+            <div class="de-ot-card">
+                <div class="de-ot-empty">
+                    <span class="de-ot-empty-icon">🔍</span>
+                    <p class="de-ot-empty-text">{emptyMessage}</p>
+                </div>
+            </div>
+        </template>
+
+        <!-- ===================== TABLE ===================== -->
+        <template lwc:if={showTable}>
+            <div class="de-ot-card">
+                <div class="de-ot-header">
+                    <span class="de-ot-title">{title}</span>
+                    <span class="de-ot-count">{productCount} products</span>
+                </div>
+
+                <template lwc:if={showSource}>
+                    <div class={sourceClass}>{sourceText}</div>
+                </template>
+
+                <template lwc:if={showBundleWarning}>
+                    <div class="de-ot-bundlewarn" role="alert">
+                        <span class="de-ot-bundlewarn-icon">⚠️</span>
+                        <span class="de-ot-bundlewarn-text">{bundleWarningText}</span>
+                    </div>
+                </template>
+
+                <table class="de-ot-table">
+                    <thead>
+                        <tr>
+                            <th class="de-ot-th de-ot-num">#</th>
+                            <th class="de-ot-th">Product</th>
+                            <th class="de-ot-th de-ot-pack">Pack</th>
+                            <th class="de-ot-th de-ot-qty">Qty</th>
+                            <th class="de-ot-th de-ot-val">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={pagedRows} for:item="row">
+                            <tr key={row.sku} class={row.rowClass}>
+                                <td class="de-ot-td de-ot-num">{row.n}</td>
+                                <td class="de-ot-td">
+                                    <span class="de-ot-name">{row.name}</span>
+                                    <span class="de-ot-rate">{row.rateText} each
+                                        <template lwc:if={row.bundleText}>
+                                            <span class="de-ot-bundlenote">{row.bundleText}</span>
+                                        </template>
+                                    </span>
+                                    <template lwc:if={row.flagged}>
+                                        <span class="de-ot-flag">Needs Confirmation</span>
+                                    </template>
+                                    <template lwc:if={row.badBundle}>
+                                        <span class="de-ot-badbundle">{row.bundleHint}</span>
+                                    </template>
+                                </td>
+                                <td class="de-ot-td de-ot-pack">{row.pack}</td>
+                                <td class="de-ot-td de-ot-qty">
+                                    <div class="de-ot-stepper">
+                                        <button class="de-ot-step" data-sku={row.sku} onclick={handleDec}>−</button>
+                                        <span class="de-ot-qtyval">{row.qty}</span>
+                                        <button class="de-ot-step" data-sku={row.sku} onclick={handleInc}>+</button>
+                                    </div>
+                                </td>
+                                <td class="de-ot-td de-ot-val">{row.valueText}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+
+                <div class="de-ot-footer">
+                    <div class="de-ot-pager">
+                        <button class="de-ot-pagebtn" onclick={handlePrev} disabled={disablePrev}>‹</button>
+                        <span class="de-ot-pagelabel">{pageLabel}</span>
+                        <button class="de-ot-pagebtn" onclick={handleNext} disabled={disableNext}>›</button>
+                    </div>
+                    <div class="de-ot-totals">{footerText}</div>
+                </div>
+            </div>
+
+            <template lwc:if={showFlag}>
+                <div class="de-ot-flagbox">
+                    <p class="de-ot-flagq">{flagQuestion}</p>
+                    <div class="de-ot-flagbtns">
+                        <button class="de-ot-btn de-ot-btn-primary" onclick={handleConfirmFlag}>Yes, That’s Right</button>
+                        <button class="de-ot-btn de-ot-btn-secondary" onclick={handleChangeFlag}>Change It</button>
+                    </div>
+                </div>
+            </template>
+
+            <template lwc:if={hasNextActions}>
+                <div class="de-ot-nextbar">
+                    <template for:each={decoratedActions} for:item="a">
+                        <button key={a.key} class={a.cls} data-message={a.message} disabled={a.disabled} onclick={handleNextAction}>{a.label}</button>
+                    </template>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>

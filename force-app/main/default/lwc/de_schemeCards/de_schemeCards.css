@@ -1,0 +1,180 @@
+:host {
+    display: block;
+    padding: 10px;
+}
+
+.scheme-cards-root {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 480px;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+    color: #16325c;
+}
+
+.heading {
+    margin: 0 0 4px 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #16325c;
+}
+
+.error-message {
+    margin: 0;
+    font-size: 13px;
+    color: #a86403;
+}
+
+.scheme-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-left: 4px solid #e5e9ee;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    padding: 14px 16px;
+}
+
+.scheme-card.status-secured {
+    border-left-color: #2e844a;
+}
+
+.scheme-card.status-within_reach {
+    border-left-color: #a86403;
+}
+
+.scheme-card.status-out_of_reach {
+    border-left-color: #8491a0;
+    opacity: 0.85;
+}
+
+.card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.scheme-name {
+    font-weight: 700;
+    font-size: 14px;
+    color: #16325c;
+}
+
+.badge {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+}
+
+.status-secured .badge {
+    color: #2e844a;
+    background: #edf7f0;
+    border: 1px solid #c3e6cd;
+}
+
+.status-within_reach .badge {
+    color: #a86403;
+    background: #fffaf2;
+    border: 1px solid #f3e2c7;
+}
+
+.status-out_of_reach .badge {
+    color: #8491a0;
+    background: #f4f6f8;
+    border: 1px solid #e5e9ee;
+}
+
+.scheme-window {
+    margin: 4px 0 10px 0;
+    font-size: 12px;
+    color: #5c6b7a;
+}
+
+.progress-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: #f4f6f8;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+.progress-fill.status-secured {
+    background: #2e844a;
+}
+
+.progress-fill.status-within_reach {
+    background: #a86403;
+}
+
+.progress-fill.status-out_of_reach {
+    background: #8491a0;
+}
+
+.scheme-detail {
+    margin: 8px 0 2px 0;
+    font-size: 13px;
+    color: #16325c;
+}
+
+.scheme-reward {
+    margin: 2px 0 0 0;
+    font-size: 12px;
+    color: #5c6b7a;
+}
+
+.button-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    font-family: 'Salesforce Sans', Arial, sans-serif;
+}
+
+.btn-primary {
+    background: #ee3124;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #d62718;
+}
+
+.btn-secondary {
+    background: #fff;
+    color: #ee3124;
+    border: 1px solid #c9d7e4;
+}
+
+.btn-secondary:hover {
+    background: #f4f6f8;
+}
+
+/* forward button shown when every scheme is already secured / out of reach */
+.finalise-row {
+    display: flex;
+    margin-top: 2px;
+}
+
+.finalise-btn {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 10px 14px;
+}
